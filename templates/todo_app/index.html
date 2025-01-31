@@ -2,28 +2,50 @@
 
 {% block content %}
 
-  <div class="page-header" style="align-content: flex-start">
+  <div class="page-header">
     <h1>TODO list</h1>
 
-    <a class="btn btn-primary btn-sm"
+    <a class="btn btn-primary"
        href="{% url 'todo_app:task-create' %}"
        role="button">
       Add task
     </a>
   </div>
 
+  <br>
+
   <div class="tasks-list">
   {% if tasks %}
     {% for task in tasks %}
       <div class="task-item">
 
-        <strong>{{ task.content }}
+        <div class="content-line">
+          <strong>{{ task.content }}
+            {% if task.is_done %}
+              <span style="color:forestgreen">&nbsp;Done</span>
+            {% else %}
+              <span style="color:red">&nbsp;Not done</span>
+            {% endif %}
+          </strong>
+
+        <!---complete button-->
+        <form action="{% url 'todo_app:task-complete' pk=task.id %}" method="post">
+          {% csrf_token %}
           {% if task.is_done %}
-            <span style="color:forestgreen">{{ task.is_done }}</span>
+            <button type="submit"
+               class="btn btn-warning">
+              Undo
+            </button>
           {% else %}
-            <span style="color:red">{{ task.is_done }}</span>
+            <button type="submit"
+               class="btn btn-success">
+              Complete
+            </button>
           {% endif %}
-        </strong>
+        </form>
+        <!---end complete button-->
+
+        </div>
         <br>
 
         <p><small>

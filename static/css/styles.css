@@ -13,13 +13,20 @@ body {
     align-items: center;
 }
 
+.content-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .tag-line-with-functions {
-    font-weight: bold;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
+    margin: 0;
 }
 
 .tag-line-with-functions p {
@@ -29,9 +36,26 @@ body {
 .tag-line-with-functions a {
     text-decoration: none;
     color: #007bff;
-    font-weight: normal;
+    font-weight: inherit;
 }
 
+.tag-line-with-functions .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.tag-line-with-functions .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.tag-line-with-functions .btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
 
 
 /*--HAVE A GOOD DAY STYLE--*/
