@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+
   <div class="page-header" style="align-content: flex-start">
     <h1>TODO list</h1>
-    <a class="btn btn-primary btn-sm" href="#" role="button">Add task</a>
+
+    <a class="btn btn-primary btn-sm"
+       href="{% url 'todo_app:task-create' %}"
+       role="button">
+      Add task
+    </a>
   </div>
 
   <div class="tasks-list">
@@ -18,6 +24,7 @@
             <span style="color:red">{{ task.is_done }}</span>
           {% endif %}
         </strong>
+        <br>
 
         <p><small>
           Created at: {{ task.created_at|date:"M. d, Y, g:i a" }}
@@ -27,15 +34,23 @@
           {% endif %}
         </small></p>
 
-      {% if task.tags %}
-        <h3 class="text-muted">
-          Tags:
-          {% for tag in task.tags %}
-            {{ tag.name }}
-          {% endfor %}
-        </h3>
-      {% endif %}
+      <div class="tag-line-with-functions">
+
+        {% if task.tags.all %}
+          <p class="text-muted">
+            Tags:
+            {% for tag in task.tags.all %}
+              {% for item in tag.name %}{{ item }}{% endfor %}
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        <a href="{% url 'todo_app:task-update' pk=task.id %}">Update</a>
+        <a href="{% url 'todo_app:task-delete' pk=task.id %}">&nbsp;Delete</a>
+
+      </div>
       <hr><br>
+
       </div>
     {% endfor %}
     {% else %}
