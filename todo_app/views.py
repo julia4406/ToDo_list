@@ -8,7 +8,9 @@ from todo_app.models import Task, Tag
 
 class HomePageView(ListView):
     model = Task
-    queryset = Task.objects.prefetch_related("tags")
+    queryset = Task.objects.prefetch_related(
+        "tags"
+    ).order_by("is_done", "-created_at")
     template_name = "todo_app/index.html"
     context_object_name = "tasks"
 
