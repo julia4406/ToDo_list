@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from todo_app.forms import TagForm
 from todo_app.models import Task, Tag
@@ -21,4 +21,15 @@ class TagListView(ListView):
 class TagCreateView(CreateView):
     model = Tag
     form_class = TagForm
+    success_url = reverse_lazy("todo_app:tag-list")
+
+
+class TagUpdateView(UpdateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("todo_app:tag-list")
+
+
+class TagDeleteView(DeleteView):
+    model = Tag
     success_url = reverse_lazy("todo_app:tag-list")
