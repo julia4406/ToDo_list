@@ -10,7 +10,8 @@ from todo_app.views import (
     TagDeleteView,
     TaskCreateView,
     TaskUpdateView,
-    TaskDeleteView
+    TaskDeleteView,
+    TaskCompleteView,
 )
 
 
@@ -25,4 +26,5 @@ urlpatterns = [
     path("task/create/", TaskCreateView.as_view(), name="task-create"),
     path("task/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),
     path("task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
+    path("task/<int:pk>/complete/", TaskCompleteView.as_view(), name="task-complete")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
