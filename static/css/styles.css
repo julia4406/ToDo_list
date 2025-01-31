@@ -13,6 +13,27 @@ body {
     align-items: center;
 }
 
+.tag-line-with-functions {
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.tag-line-with-functions p {
+    margin: 0;
+}
+
+.tag-line-with-functions a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: normal;
+}
+
+
+
 /*--HAVE A GOOD DAY STYLE--*/
 @keyframes funnyColors {
     0% { color: red; transform: rotate(0deg) scale(1); }
