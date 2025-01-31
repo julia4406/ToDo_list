@@ -2,25 +2,45 @@
 
 {% block content %}
   <div class="page-header" style="align-content: flex-start">
-    <h1>Tags</h1>
-    <a class="btn btn-primary" href="#" role="button">Add</a>
+    <h1>TODO list</h1>
+    <a class="btn btn-primary btn-sm" href="#" role="button">Add task</a>
   </div>
 
-{#  <div class="tasks-list">#}
-{#  {% if tasks %}#}
-{#    {% for task in tasks %}#}
-{#      <div class="task-item">#}
-{#        <h3>{{ task.content }} #}
-{#          {% if task.is_done %}#}
-{#            <span style="color:forestgreen">{{ task.is_done }}</span>#}
-{#          {% else %}#}
-{#            <span style="color:red">{{ task.is_done }}</span>#}
-{#          {% endif %}#}
-{#        </h3>#}
-{#      #}
-{#      </div>#}
-{#    {% endfor %}#}
-{#  {% endif %}#}
-{#  </div>#}
+  <div class="tasks-list">
+  {% if tasks %}
+    {% for task in tasks %}
+      <div class="task-item">
+
+        <strong>{{ task.content }}
+          {% if task.is_done %}
+            <span style="color:forestgreen">{{ task.is_done }}</span>
+          {% else %}
+            <span style="color:red">{{ task.is_done }}</span>
+          {% endif %}
+        </strong>
+
+        <p><small>
+          Created at: {{ task.created_at|date:"M. d, Y, g:i a" }}
+          {% if task.deadline %}
+            <span style="color: brown">
+              &nbsp;Deadline: {{ task.deadline }}</span>
+          {% endif %}
+        </small></p>
+
+      {% if task.tags %}
+        <h3 class="text-muted">
+          Tags:
+          {% for tag in task.tags %}
+            {{ tag.name }}
+          {% endfor %}
+        </h3>
+      {% endif %}
+      <hr><br>
+      </div>
+    {% endfor %}
+    {% else %}
+    <p class="funny-text">U've done all your tasks. Have a rest!</p>
+  {% endif %}
+  </div>
 
 {% endblock %}

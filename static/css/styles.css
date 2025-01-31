@@ -12,3 +12,26 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+/*--HAVE A GOOD DAY STYLE--*/
+@keyframes funnyColors {
+    0% { color: red; transform: rotate(0deg) scale(1); }
+    25% { color: orange; transform: rotate(-3deg) scale(1.1); }
+    50% { color: yellow; transform: rotate(3deg) scale(1); }
+    75% { color: green; transform: rotate(-3deg) scale(1.1); }
+    100% { color: blue; transform: rotate(0deg) scale(1); }
+}
+
+.funny-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    animation: funnyColors 1.5s infinite alternate ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.funny-text:hover {
+    transform: scale(1.2) rotate(5deg);
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
