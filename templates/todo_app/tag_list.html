@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="page-header" style="align-content: flex-start">
+    <h1>Tags</h1>
+    <a
+        class="btn btn-primary"
+        href="{% url 'todo_app:tag-create' %}"
+        role="button">
+      Add
+    </a>
+  </div>
+
+  <div class="tags-table">
+  {% if tags %}
+
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+
+        {% for tag in tags %}
+          <tr>
+            <td>{{ tag.name }}</td>
+
+            <td>
+                <a class="btn btn-secondary"
+                    href="{% url 'todo_app:tag-update' pk=tag.id %}">
+                  Update
+                </a>
+            </td>
+
+            <td>
+                <form action="{% url 'todo_app:tag-delete' pk=tag.id %}" method="post">
+                  {% csrf_token %}
+                  <input class="btn btn-secondary" type="submit" value="Delete">
+                </form>
+            </td>
+
+          </tr>
+        {% endfor %}
+
+      </table>
+
+  {% endif %}
+  </div>
+{% endblock %}

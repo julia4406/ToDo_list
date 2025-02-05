@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="page-header">
+    <h1>TODO list</h1>
+
+    <a class="btn btn-primary"
+       href="{% url 'todo_app:task-create' %}"
+       role="button">
+      Add task
+    </a>
+  </div>
+
+  <br>
+
+  <div class="tasks-list">
+  {% if tasks %}
+    {% for task in tasks %}
+      <div class="task-item">
+
+        <div class="content-line">
+          <strong>{{ task.content }}
+            {% if task.is_done %}
+              <span style="color:forestgreen">&nbsp;Done</span>
+            {% else %}
+              <span style="color:red">&nbsp;Not done</span>
+            {% endif %}
+          </strong>
+
+        <!---complete button-->
+        <form action="{% url 'todo_app:task-complete' pk=task.id %}" method="post">
+          {% csrf_token %}
+          {% if task.is_done %}
+            <button type="submit"
+               class="btn btn-warning">
+              Undo
+            </button>
+          {% else %}
+            <button type="submit"
+               class="btn btn-success">
+              Complete
+            </button>
+          {% endif %}
+        </form>
+        <!---end complete button-->
+
+        </div>
+        <br>
+
+        <p><small>
+          Created at: {{ task.created_at|date:"M. d, Y, g:i a" }}
+          {% if task.deadline %}
+            <span style="color: brown">
+              &nbsp;Deadline: {{ task.deadline }}</span>
+          {% endif %}
+        </small></p>
+
+      <div class="tag-line-with-functions">
+
+        {% if task.tags.all %}
+          <p class="text-muted">
+            Tags:
+            {% for tag in task.tags.all %}
+              {% for item in tag.name %}{{ item }}{% endfor %}
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        <a href="{% url 'todo_app:task-update' pk=task.id %}">Update</a>
+        <a href="{% url 'todo_app:task-delete' pk=task.id %}">&nbsp;Delete</a>
+
+      </div>
+      <hr><br>
+
+      </div>
+    {% endfor %}
+    {% else %}
+    <p class="funny-text">U've done all your tasks. Have a rest!</p>
+  {% endif %}
+  </div>
+
+{% endblock %}
