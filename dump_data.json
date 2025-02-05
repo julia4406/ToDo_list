@@ -1,0 +1,103 @@
+[
+{
+    "model": "todo_app.task",
+    "pk": 5,
+    "fields": {
+        "content": "Finish ToDo task and not dye",
+        "created_at": "2025-01-31T11:49:57.829Z",
+        "deadline": "2025-01-31T14:30:00Z",
+        "is_done": false,
+        "tags": [
+            7
+        ]
+    }
+},
+{
+    "model": "todo_app.task",
+    "pk": 6,
+    "fields": {
+        "content": "Go for walk",
+        "created_at": "2025-01-31T11:55:56.431Z",
+        "deadline": null,
+        "is_done": false,
+        "tags": []
+    }
+},
+{
+    "model": "todo_app.task",
+    "pk": 7,
+    "fields": {
+        "content": "Cleaning home",
+        "created_at": "2025-01-31T11:56:58.585Z",
+        "deadline": "2025-02-01T13:00:00Z",
+        "is_done": false,
+        "tags": [
+            4,
+            7
+        ]
+    }
+},
+{
+    "model": "todo_app.task",
+    "pk": 10,
+    "fields": {
+        "content": "Start resume-project",
+        "created_at": "2025-01-31T12:32:54.062Z",
+        "deadline": "2025-02-05T15:00:00Z",
+        "is_done": false,
+        "tags": [
+            7
+        ]
+    }
+},
+{
+    "model": "todo_app.task",
+    "pk": 11,
+    "fields": {
+        "content": "Find a VERY good job",
+        "created_at": "2025-01-31T13:25:50.393Z",
+        "deadline": null,
+        "is_done": false,
+        "tags": [
+            4,
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "todo_app.tag",
+    "pk": 4,
+    "fields": {
+        "name": "home"
+    }
+},
+{
+    "model": "todo_app.tag",
+    "pk": 6,
+    "fields": {
+        "name": "shop"
+    }
+},
+{
+    "model": "todo_app.tag",
+    "pk": 7,
+    "fields": {
+        "name": "work"
+    }
+},
+{
+    "model": "todo_app.tag",
+    "pk": 8,
+    "fields": {
+        "name": "entertainment"
+    }
+},
+{
+    "model": "todo_app.tag",
+    "pk": 9,
+    "fields": {
+        "name": "travel"
+    }
+}
+]
